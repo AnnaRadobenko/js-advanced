@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 1</title>
+    <style>
+        * {
+            margin-left: 15px;
+            padding: 0;
+        }
+        li {
+            font-size: 20px;
+            margin: 5px;
+        }
+        input {
+            margin: 1px;
+            padding: 5px;
+            text-align: center;
+            font-size: 16px;
+            width: 250px;
+        }
+        .content {
+            display: flex;
+        }
+        .selected {
+            color: red;
+        }
+        .select-green {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var firstChild;
+        var lastChild;
+        function firstItem() {
+            var selectedItem = document.getElementsByClassName('select-green')[0];
+            if (selectedItem) {
+                selectedItem.classList.remove('select-green');
+            }
+            firstChild = document.getElementById("myUl").firstElementChild;
+            firstChild.classList.add('selected');
+            if (lastChild) {
+                lastChild.classList.remove('selected');
+            }
+        }
+
+        function lastItem() {
+            var selectedItem = document.getElementsByClassName('select-green')[0];
+            if (selectedItem) {
+                selectedItem.classList.remove('select-green');
+            }
+            lastChild = document.getElementById("myUl").lastElementChild;
+            lastChild.classList.add('selected');
+            if (firstChild) {
+                firstChild.classList.remove('selected');
+            }
+        }
+
+        function nextItem() {
+            var selectRed = document.getElementsByClassName('selected')[0];
+            var selectGreen;
+            if (selectRed) {
+                selectRed.classList.remove('selected');
+                selectRed.classList.add('select-green');
+                selectRed.nextSibling;
+            } else {
+                selectGreen = document.getElementsByClassName('select-green')[0];
+                var nextItem;
+                if (selectGreen) {
+                    selectGreen.classList.remove('select-green');
+                    nextItem = selectGreen.nextElementSibling;
+                    if(nextItem === null) {
+                        nextItem = document.getElementById("myUl").firstElementChild;
+                    }
+                } else {
+                    nextItem = document.getElementById("myUl").firstElementChild;
+                }
+                nextItem.classList.add('select-green');
+            }
+        }
+
+        function prevItem() {
+            var selectRed = document.getElementsByClassName('selected')[0];
+            var selectGreen;
+            if (selectRed) {
+                selectRed.classList.remove('selected');
+                selectRed.classList.add('select-green');
+                selectRed.previousSibling;
+            } else {
+                selectGreen = document.getElementsByClassName('select-green')[0];
+                var nextItem;
+                if (selectGreen) {
+                    selectGreen.classList.remove('select-green');
+                    nextItem = selectGreen.previousElementSibling;
+                    if(nextItem === null) {
+                        nextItem = document.getElementById("myUl").lastElementChild;
+                    }
+                } else {
+                    nextItem = document.getElementById("myUl").lastElementChild;
+                }
+                nextItem.classList.add('select-green');
+            }
+        }
+
+        function addItem() {
+            var newItem = document.createElement("li");
+            var nextNumber = document.getElementsByTagName('li').length;
+            newItem.innerHTML = 'List Item ' + (nextNumber + 1);
+            document.getElementById("myUl").appendChild(newItem);
+        }
+
+        function delItem() {
+            var delObj = document.getElementById("myUl");
+            var oneChild = delObj.lastChild;
+            delObj.removeChild(oneChild);  
+        }
+
+        function addItemBegin() {
+            var list = document.getElementById("myUl");
+            var firstLi = list.getElementsByTagName('li')[0];
+            var newListItem = document.createElement('li');
+            newListItem.innerHTML = 'New Item';
+            list.insertBefore(newListItem, firstLi);
+        }
+    </script>
+    
+    <div class="content">
+        <ul id="myUl">
+            <li>List Item 1</li>
+            <li>List Item 2</li>
+            <li>List Item 3</li>
+            <li>List Item 4</li>
+            <li>List Item 5</li>
+        </ul>
+        <div>
+            <input type="button" value="Select first item" onclick="firstItem()" /><br>
+            <input type="button" value="Select last item" onclick="lastItem()" /><br>
+            <input type="button" value="Select next item" onclick="nextItem()" /><br>
+            <input type="button" value="Select previous item" onclick="prevItem()" /><br>
+            <input type="button" value="Add item" onclick="addItem()" /><br>
+            <input type="button" value="Delete item" onclick="delItem()" /><br>
+            <input type="button" value="Add item to the beginning" onclick="addItemBegin()" />
+        </div>
+    </div>
+</body>
+</html>
