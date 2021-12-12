@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork</title>
+    <style type="text/css">
+        div {
+            margin: 10px;
+            font-size: 20px;   
+        }
+        input {
+            font-size: 16px;
+        }
+        #two {
+            font-size: 20px;
+            background-color: white;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input id="inp" type="button" value="Показать кнопку" onclick="button()">
+        <div id="one">one</div>
+    </div>
+    <script>
+        var div = document.getElementById("one");
+        div.insertAdjacentHTML("afterend", "<div id='two'>two</div>");
+    
+        function button() {
+            var click = document.getElementById("two");
+            
+            container = click.parentNode;
+            button = document.createElement("button");
+
+            button.id = click.id;
+            button.textContent = click.textContent;
+            button.onclick = callback;
+            
+            container.removeChild(click);
+            container.appendChild(button);
+            
+            var inp = document.getElementById("inp");
+            inp.hidden = true;
+
+            function callback() {
+                    var buttonTwo = document.getElementById("two");
+                    buttonTwo.insertAdjacentHTML("beforebegin", "<div id='two-first'>two first</div>");
+                    
+                    content = buttonTwo.parentNode;
+                    divTwo = document.createElement("div");
+
+                    divTwo.id = "two-second"
+                    divTwo.innerHTML = "two second"; 
+
+                    content.removeChild(buttonTwo);
+                    content.appendChild(divTwo);
+            }
+        }
+    </script>
+</body>
+</html>
