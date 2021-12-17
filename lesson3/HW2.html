@@ -1,0 +1,35 @@
+<!-- 
+    Запросите у пользователя ввести какую-то фразу. 
+    Отобразите каждое отдельное слово в виде списка ul li. 
+    Также отобразите первое слово UPPERCASE, а последние 2 с маленькой. 
+    Найдите все буквы "а" их количество в модальное окно. 
+ -->
+ 
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+<body>   
+    <script>
+        var phrase = prompt('Enter a phrase?');
+        var elem = phrase.split(" ");
+
+        for (let i = 0; i < elem.length; i++) {
+            // var word = elem[i];
+            if (i === 0) {
+                elem[i] = elem[i].toUpperCase();
+                document.write("<ul><li>" + elem[i] + "</li></ul>")
+            } else if (i === elem.length - 1 || i === elem.length - 2) {
+                elem[i] = elem[i].toLowerCase();
+                document.write("<ul><li>" + elem[i] + "</li></ul>");
+            } else document.write("<ul><li>" + elem[i] + "</li></ul>");       
+        }
+
+        var letter = new RegExp("а|a", "gi");
+        var sum = phrase.match(letter).length;
+        alert('Количесво букв = ' + sum)
+    </script>
+</body>
+</html>
