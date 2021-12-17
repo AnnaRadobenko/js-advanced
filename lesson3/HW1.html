@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <style>
+        input {
+            font-size: 20px;
+            margin: 5px;
+            height: 40px;
+            width: 100px;
+        }
+        div {
+            font-size: 30px;
+            margin: 30px;
+            color: #0e27b4;
+            border: 1px solid black;
+            height: 30px;
+            width: 30px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="Stop" onclick="stopCount()">
+    <input type="button" value="Start" onclick="startCount()">
+    <input type="button" value="Clear" onclick="clearCount()">
+    <input type="button" value="Reverse" onclick="reverseCount()">
+
+    <div id="count"></div>
+
+    <script>
+        var seconds = 1;
+        var endSec = 30;
+        var setTime;
+        var revTime;
+//==================================== Первая часть
+        function stopCount() {
+                window.clearInterval(setTime);
+                console.log('Stop');
+            }
+
+        function startCount() {
+            setTime = setInterval(counter, 1000);
+            function counter() {
+                if (seconds > 30) {
+                    window.clearInterval(setTime);
+                } else {
+                    if (seconds < 10) {
+                        document.getElementById('count').innerHTML = '0' + seconds;
+                        seconds++;
+                    } else {
+                        document.getElementById('count').innerHTML = seconds;
+                        seconds++;
+                    } 
+                } 
+            } console.log('Start'); 
+        }
+
+        function clearCount() {
+            window.clearInterval(setTime);
+            console.log('Clear');
+            document.getElementById('count').innerHTML = '00';
+            seconds = 1;
+        }
+//==================================================== Конец первой части
+        function reverseCount() {
+            revTime = setInterval(reverse, 1000);
+            function reverse() {
+                if (endSec < 0) {
+                    window.clearInterval(revTime);
+                    console.log('stopped');
+                } else {
+                    if (endSec > 9) {
+                        document.getElementById('count').innerHTML = endSec;
+                        endSec--;
+                    } else {
+                        document.getElementById('count').innerHTML = '0' + endSec;
+                        endSec--;
+                    }
+                } 
+            }
+        }
+//=================================================== Вторая часть
+        // function stopCount() {
+        //         window.clearInterval(revTime);
+        //         console.log('Stop');
+        //     }
+
+        // function startCount() {
+        //     revTime = setInterval(counter, 1000);
+        //     function counter() {
+        //         if (endSec < 0) {
+        //             window.clearInterval(revTime);
+        //             console.log('stopped');
+        //         } else {
+        //             if (endSec > 9) {
+        //                 document.getElementById('count').innerHTML = endSec;
+        //                 endSec--;
+        //             } else {
+        //                 document.getElementById('count').innerHTML = '0' + endSec;
+        //                 endSec--;
+        //             }
+        //         }
+        //     } console.log('Start'); 
+        // }
+
+        // function clearCount() {
+        //     window.clearInterval(revTime);
+        //     console.log('Clear');
+        //     document.getElementById('count').innerHTML = '30';
+        //     endSec = 30;
+        // }
+//========================================================== Конец второй части
+    </script>
+</body>
+</html>
