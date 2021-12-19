@@ -1,0 +1,40 @@
+<!-- Напишите регулярные выражения, которые будут выбирать 
+    индекс - 55535 - 5 numbers
+    ip адресс, пример 255.255.255.255
+    цены в долларах - $0.84, $1232.84, $4
+    дата в виде - 30/12/2016 - день, месяц, год
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>Document</title>
+ </head>
+ <body>
+     <p>
+        Lorem ipsum dolor sit amet  55555 consectetur adipisicing elit. Fuga deserunt 48961 rerum atque vero soluta error illo, mollitia hic necessitatibus harum 33125 ipsam veniam! Placeat cumque tempore voluptatibus velit quo quasi dolores.
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti 255.255.255.255 quaerat eligendi, reiciendis voluptas nisi tempore 255.255.255.255 explicabo fugit odio inventore rerum atque dolorem aliquam quis tenetur, dolorum quam ipsa, doloribus voluptatem?
+        Lorem, ipsum dolor $0.84 sit amet consectetur adipisicing elit. Eos voluptate $4 maxime doloribus quia incidunt, praesentium delectus $1232.84 tempora? Praesentium repellat voluptas possimus earum expedita minus est, ex nemo! Repudiandae, iste magnam?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas 24/12/2020 ipsum consequatur illum accusamus. Accusantium 30/12/2016 in fugiat, culpa veritatis molestias inventore nostrum voluptate, tempora nesciunt, fugit aspernatur iusto dignissimos 15/03/2018 aliquam placeat?
+     </p>
+ 	<script type="text/javascript">
+        var text = document.querySelector('p').innerHTML;
+
+        var index = /(\d{5})/g;
+        var result1 = text.match(index);
+        console.log(result1);
+
+        var ip = /(\d{3}.\d{3}.\d{3}.\d{3})/g;
+        var result2 = text.match(ip);
+        console.log(result2);
+
+        var price = /(\$\d{1,}\.?\d*)/g;
+        var result3 = text.match(price);
+        console.log(result3);
+        
+        var date = /(\d{1,2}\/\d{1,2}\/\d{4})/g;
+        var result4 = text.match(date);
+        console.log(result4);
+ 	</script>
+ </body>
+ </html>
