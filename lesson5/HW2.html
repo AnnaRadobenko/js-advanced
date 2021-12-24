@@ -1,0 +1,52 @@
+ <!--
+    1. Создайте 5 блоков с текстом. Добавьте в каждый из блоков кнопку для его удаления.
+    Используйте только один обработчик.
+
+    2. Доработайте пример 004_Attr_Tech.html таким образом, чтобы при наведении на span элементы,
+    подсказка сплыва под ними, а не в модальном окне. Используйте addEventListener -->
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+   <div>
+       1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, in dolorum nemo dolorem animi alias earum numquam, adipisci molestias nesciunt voluptatum similique consectetur eaque delectus fugiat eius labore aperiam iste?
+       <button>Remove this block</button>
+   </div>
+   <div>
+        2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, in dolorum nemo dolorem animi alias earum numquam, adipisci molestias nesciunt voluptatum similique consectetur eaque delectus fugiat eius labore aperiam iste?
+        <button>Remove this block</button>
+    </div>
+    <div>
+        3. Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, in dolorum nemo dolorem animi alias earum numquam, adipisci molestias nesciunt voluptatum similique consectetur eaque delectus fugiat eius labore aperiam iste?
+        <button>Remove this block</button>
+    </div>
+    <div>
+        4. Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, in dolorum nemo dolorem animi alias earum numquam, adipisci molestias nesciunt voluptatum similique consectetur eaque delectus fugiat eius labore aperiam iste?
+        <button>Remove this block</button>
+    </div>
+    <div>
+        5. Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, in dolorum nemo dolorem animi alias earum numquam, adipisci molestias nesciunt voluptatum similique consectetur eaque delectus fugiat eius labore aperiam iste?
+        <button>Remove this block</button>
+    </div>
+    <script>
+        var buttons = document.querySelectorAll('button');
+        
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener('click', removeBlock)
+        }
+
+        function removeBlock(e) {
+            var div = e.target.parentElement;
+            div.classList.add('hide');
+        }
+    </script>
+</body>
+</html>

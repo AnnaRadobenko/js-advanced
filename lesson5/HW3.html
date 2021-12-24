@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HW3</title>
+<style>
+    .tooltip {
+      position: fixed;
+      padding: 5px 5px;
+      border: 1px solid #b3c9ce;
+      border-radius: 4px;
+      text-align: center;
+      font: italic 14px/1.3 sans-serif;
+      color: #333;
+      background: #fff;
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+    }
+</style>
+<script>
+    window.addEventListener('load', function () {
+        var span = document.querySelectorAll('span')
+        var dataToggleId;
+        var tooltipElem;
+        for (let i = 0; i < span.length; i++) {
+            span[i].addEventListener('mouseover', function () {
+                dataToggleId = this.getAttribute('data-tooltip');
+                if (!dataToggleId) return;
+
+                tooltipElem = document.createElement('div');
+                tooltipElem.className = 'tooltip';
+                tooltipElem.innerHTML =  dataToggleId;
+                document.body.append(tooltipElem);
+                
+                var coords = this.getBoundingClientRect();
+                var left = coords.left;
+                var top = coords.top + 15;
+            
+                tooltipElem.style.left = left + 'px';
+                tooltipElem.style.top = top + 'px';
+            });
+            span[i].addEventListener('mouseout', function (e) {
+                if (tooltipElem) {
+                    tooltipElem.remove();
+                    tooltipElem = null;
+                }    
+            });
+        }
+    });        
+</script>
+</head>
+<body>
+  <div id="main-div">
+    <span data-tooltip="наведите">наведите</span>
+    <span data-tooltip="для">для</span>
+    <span data-tooltip="подсказки">подсказки</span>
+</div>
+</body>
+</html>
