@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+	<title>Drag and Drop</title>
+	<style>
+		#block {
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+    <!-- 
+	1. drag and drop;
+	2. создайте div, при клике на него, div начинает двигаться вправо, при клике на кнопку - останавливается,
+	при попадании div к краю окна, он переходит к началу окна.
+	-->
+	<div id="block"></div>
+	<script>
+		var block = document.getElementById('block')
+
+		function moveBlock(e) {
+			block.style.left = e.pageX - 50 + 'px';
+			block.style.top = e.pageY - 50 + 'px';
+		}
+
+		block.addEventListener('mousedown', function(e){
+			document.onmousemove = function(e){
+				moveBlock(e);
+			}
+			block.onmouseup = function(){
+				document.onmousemove = null;
+				block.onmouseup = null;
+			}
+		})
+	</script>
+</body>
+</html>
