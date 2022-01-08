@@ -1,0 +1,69 @@
+<!-- Реализуйте последние 2 слайда в презентации с помощью пройденого на уроке материала -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <script>
+        class Man {
+            constructor(walk, eat, drink) {
+                this.walk = walk;
+                this.eat = eat;
+                this.drink = drink;
+            }
+        }
+        
+        class Soldier extends Man {
+            constructor(walk, eat, drink, shoot) {
+                super(walk, eat, drink);
+                this.shoot = shoot;
+                this.showInfo = function () {
+                    document.write(`I'm walk in ${walk}. I'm eat ${eat}. I'm drink ${drink}. I'm shoot from ${shoot}.</br>`)
+                }
+            }
+        }
+
+        class Doctor extends Man {
+            constructor(walk, eat, drink, cure) {
+                super(walk, eat, drink);
+                this.cure = cure;
+                this.showInfo = function () {
+                    document.write(`I'm walk in ${this.walk}. I'm eat ${this.eat}. I'm drink ${this.drink}. My cure - ${this.cure}.</br>`)
+                }
+            }
+        }
+
+        function Dentist(walk, eat, drink, cure) {
+                this.walk = walk;
+                this.eat = eat;
+                this.drink = drink;
+                this.cure = 'treat teeth';   
+        }
+
+        function Surgeon(walk, eat, drink, cure) {
+                this.walk = walk;
+                this.eat = eat;
+                this.drink = drink;
+                this.cure = 'perform operations';
+        }
+        
+        Dentist.prototype = new Doctor();
+        Surgeon.prototype = new Doctor();
+
+        var soldier = new Soldier('park', 'soup', 'coffee', 'gun');
+        var dentist = new Dentist('forest', 'salad', 'tea');
+        var surgeon = new Surgeon('town', 'fish', 'water');
+
+        soldier.showInfo();
+        dentist.showInfo();
+        surgeon.showInfo();
+
+        console.log(soldier);
+        console.log(dentist);
+        console.log(surgeon);
+        
+    </script>
+</head>
+<body>
+</body>
+</html>
