@@ -1,0 +1,26 @@
+<!-- Создайте функцию, которая возвращает день недели для даты.
+День нужно возвратить в формате - понедельник имеет номер 1, вторник номер 2, …, воскресенье - номер 7. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <script>
+        function writeDate() {
+            var day = +prompt('Write a date: DD/mm/year');
+            var month = +prompt('Write a month: dd/MM/year');
+            var year = +prompt('Write a year: dd/mm/YEAR');
+            var date = new Date();
+            date.setDate(day);
+            date.setMonth(month-1);
+            date.setFullYear(year);
+            var dayWeek = [7, 1, 2, 3, 4, 5, 6]
+            var thisDay = date.getDay();
+            document.write(`This is ${thisDay} day of week`);
+        }
+        writeDate();
+    </script>
+</head>
+<body>
+</body>
+</html>
